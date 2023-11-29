@@ -40,5 +40,14 @@ export const useTodoStore = defineStore('todo', {
         this.todoList[index] = response.data;
       }
     },
+
+    /**
+     * Delets single to-do 
+     */
+
+    async deleteTodo(todoId) {
+      await axios.delete(`/todos/${todoId}`);
+      this.todoList = this.todoList.filter((todo) => todo.id !== todoId);
+    },
   },
 });
