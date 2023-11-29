@@ -23,4 +23,22 @@ describe('Todo-List store apis CRUD Testing', () => {
         }
     });
 
+    it('creates a new todo', async () => {
+        try {
+            const newTodo = { todo: 'Test Todo', completed: false, userId: 5 };
+            await todoStore.createTodo(newTodo);
+
+            // Check if the newTodo is in the todoList
+            const isTodoInList = todoStore.todoList.some(todo => (
+                todo.todo === newTodo.todo &&
+                todo.completed === newTodo.completed
+            ));
+
+            expect(isTodoInList).toBe(true);
+        } catch (error) {
+            console.error('Error in "creates a new todo" test:', error);
+            throw error;
+        }
+    });
+
 });
