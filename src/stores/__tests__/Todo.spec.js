@@ -51,4 +51,12 @@ describe('Todo-List store apis CRUD Testing', () => {
         expect(todoStore.todoList[index].todo).to.equal('Updated Todo');
     });
 
+    it('deletes a todo', async () => {
+        const todoId = 3;
+        await todoStore.deleteTodo(todoId);
+
+        const index = todoStore.todoList.findIndex((todo) => todo.id === todoId);
+        expect(index).to.equal(-1); // Not Found
+    });
+
 });
