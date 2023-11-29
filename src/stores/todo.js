@@ -20,5 +20,14 @@ export const useTodoStore = defineStore('todo', {
       const response = await axios.get('/todos');
       this.todoList = response.data.todos;
     },
+
+     /**
+     * Creates single to-do 
+     */
+
+    async createTodo(newTodo) {
+      const response = await axios.post('/todos/add', newTodo);
+      this.todoList.push(response.data);
+    },
   },
 });
