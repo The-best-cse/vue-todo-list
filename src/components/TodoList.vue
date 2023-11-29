@@ -30,8 +30,8 @@ export default {
       try {
         newTodo.value = {
           todo: 'Use DummyJSON in the project',
-          completed: false
-          // userId: 5
+          completed: false,
+          userId: 5
         }
 
         await todoStore.createTodo(newTodo.value)
@@ -42,16 +42,32 @@ export default {
       }
     }
 
-    const updateTodo = async (index) => {
-      const updatedTodo = prompt('Update todo:', todoStore.todos[index])
-      if (updatedTodo !== null) {
-        await todoStore.updateTodo(index, updatedTodo)
+    const updateTodo = async (todo) => {
+      try {
+        const updatedTodo = prompt('Update todo:', todo.todo)
+        const updatedTodoObj = {
+          todo: updatedTodo
+        }
+
+        if (updatedTodo !== null) {
+          await todoStore.updateTodo(todo.id, updatedTodoObj)
+          success.value = 'Todo has been updated successfully'
+        }
+      } catch (e) {
+        // Handle and display the error
+        error.value = e.message || 'An error occurred while updating the todo.'
       }
     }
 
-    const deleteTodo = async (index) => {
+    const deleteTodo = async (todoId) => {
+      try {
       if (confirm('Are you sure you want to delete this todo?')) {
-        await todoStore.deleteTodo(index)
+        await todoStore.deleteTodo(todoId)
+        success.value = 'Todo has been deleted successfully'
+      }
+    } catch (e) {
+        // Handle and display the error
+        error.value = e.message || 'An error occurred while deleting the todo.'
       }
     }
 
