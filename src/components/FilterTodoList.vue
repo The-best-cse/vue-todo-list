@@ -31,19 +31,17 @@ export default {
     const filterTodos = () => {
       const filterInput = searchText.value.trim().toLowerCase()
 
-      const isStateFilter = ['completed', 'not completed'].includes(filterInput);
+      const isStateFilter = ['completed', 'not completed'].includes(filterInput)
 
       if (isStateFilter) {
-        const isCompletedState = filterInput === 'completed';
+        const isCompletedState = filterInput === 'completed'
         todoStore.filterTodosByState(isCompletedState)
       } else {
         if (filterInput !== '') {
-        const regex = new RegExp(filterInput, 'i') // 'i' for case-insensitive search
-        todoStore.filterTodosByRegex(regex)
+          const regex = new RegExp(filterInput, 'i') // 'i' for case-insensitive search
+          todoStore.filterTodosByRegex(regex)
+        }
       }
-
-      }
-      
     }
 
     watch(searchText, () => {
