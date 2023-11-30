@@ -9,6 +9,8 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 ## Features
 
 - Create new tasks
+- Filter tasks based on search text and state
+- Preserve tasks state when reloading
 - Read and display existing tasks
 - Update task status and details
 - Delete tasks
@@ -45,14 +47,11 @@ src/
 ├── └── main.css
 ├── [components]
 ├── ├── TodoList.vue
+├── ├── FilterTodoList.vue
+├── ├── NewTodo.vue
+├── ├── EditSingleTodo.vue
 ├── ├── [__tests__]
 ├── ├── └── 
-└── [icons]
-├── ├── ├── IconCommunity.vue
-├── ├── ├── IconDocumentation.vue
-├── ├── ├── IconEcosystem.vue
-├── ├── ├── IconSupport.vue
-├── ├── ├── IconTooling.vue
 ├── main.js
 ├── [router]
 └── ├── index.js
@@ -68,12 +67,15 @@ src/
 
 ```
 
-.`assets`: Contains static assets like images or styles.
-.`components`: Contains Vue components. In this case, TodoList.vue is the main component.
-.`App.vue`: The main application component.
-.`main.js`: Entry point to the application.
+- `assets`: Contains static assets like images or styles.
+- `components`: Contains Vue components. In this case, TodoList.vue is the main component.
+- `views`: Contains Vue views. In this case, HomeView.vue is the main view.
+- `stores`: Contains Pinia stores. In this case, TodoStore todo.js is the main store.
+- `router`: Contains app routes.
+- `App.vue`: The main application component.
+- `main.js`: Entry point to the application.
 
-## Dependencies 'CHANGE ME'
+## Dependencies
 
 - [Vue.js](https://vuejs.org/)
 - [Vite.js](https://vitejs.dev/)
