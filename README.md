@@ -37,6 +37,7 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 
 ## Project Structure 'CHANGE ME'
 
+```bash
 src/
 ├── [assets]
 ├── ├── base.css
@@ -65,6 +66,8 @@ src/
 └── [views]
 └── ├── HomeView.vue
 
+```
+
 .`assets`: Contains static assets like images or styles.
 .`components`: Contains Vue components. In this case, TodoList.vue is the main component.
 .`App.vue`: The main application component.
@@ -72,12 +75,13 @@ src/
 
 ## Dependencies 'CHANGE ME'
 
-- Vue.js: https://vuejs.org/
-- Vite.js: https://vitejs.dev/
-- Vue Router: https://router.vuejs.org/
-- Pinia: https://pinia.vuejs.org/core-concepts/actions.html
-- Axios: https://github.com/axios/axios
-- Vitest: https://vitest.dev/
+- [Vue.js](https://vuejs.org/)
+- [Vite.js](https://vitejs.dev/)
+- [Vue Router](https://router.vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/core-concepts/actions.html)
+- [Axios](https://github.com/axios/axios)
+- [Vitest](https://vitest.dev/)
+- [Tailwindcss](https://tailwindcss.com/)
 
 ## Customize Configuration
 
