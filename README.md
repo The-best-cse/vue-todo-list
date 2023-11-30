@@ -17,7 +17,7 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 
 1. **Clone the repository:**
    ```bash
-   git clone [GithubLink](https://github.com/The-best-cse/vue-todo-list.git)
+   git clone https://github.com/The-best-cse/vue-todo-list.git
    cd vue-todo-list
    ```
 2. **Install dependencies:**
@@ -72,12 +72,12 @@ src/
 
 ## Dependencies 'CHANGE ME'
 
-Vue.js: https://vuejs.org/
-Vite.js: https://vitejs.dev/
-Vue Router: https://router.vuejs.org/
-Pinia: https://pinia.vuejs.org/core-concepts/actions.html
-Axios: https://github.com/axios/axios
-Vitest: https://vitest.dev/
+- Vue.js: https://vuejs.org/
+- Vite.js: https://vitejs.dev/
+- Vue Router: https://router.vuejs.org/
+- Pinia: https://pinia.vuejs.org/core-concepts/actions.html
+- Axios: https://github.com/axios/axios
+- Vitest: https://vitest.dev/
 
 ## Customize Configuration
 
