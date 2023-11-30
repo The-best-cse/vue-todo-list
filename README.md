@@ -17,7 +17,7 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/'CHANGE ME'/vue-todo-list.git
+   git clone [GithubLink](https://github.com/The-best-cse/vue-todo-list.git)
    cd vue-todo-list
    ```
 2. **Install dependencies:**
@@ -38,18 +38,14 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 ## Project Structure 'CHANGE ME'
 
 src/
-|-- assets/
 ├── [assets]
 ├── ├── base.css
 ├── ├── logo.svg
 ├── └── main.css
 ├── [components]
-├── ├── HelloWorld.vue
-├── ├── TheWelcome.vue
 ├── ├── TodoList.vue
-├── ├── WelcomeItem.vue
 ├── ├── [__tests__]
-├── ├── └── HelloWorld.spec.js
+├── ├── └── 
 └── [icons]
 ├── ├── ├── IconCommunity.vue
 ├── ├── ├── IconDocumentation.vue
@@ -62,13 +58,11 @@ src/
 ├── [stores]
 ├── ├── [__tests__]
 └── ├── ├──Todo.spec.js
-├── ├── counter.js
 └── ├── todo.js
 ├── [utils]
 ├── ├── apiErrorHandler.js
 └── ├── axiosInstance.js
 └── [views]
-├── ├── AboutView.vue
 └── ├── HomeView.vue
 
 .`assets`: Contains static assets like images or styles.
@@ -87,7 +81,7 @@ Vitest: https://vitest.dev/
 
 ## Customize Configuration
 
-See Configuration Reference >> `https://vitejs.dev/config/` for Vue CLI configuration options.
+See Configuration Reference >> [Vite](https://vitejs.dev/config/) for Vue CLI configuration options.
 
 ### Compile and Hot-Reload for Development
 
