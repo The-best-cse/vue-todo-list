@@ -2,14 +2,14 @@
 // import TheWelcome from '../components/TheWelcome.vue'
 import TodoList from '@/components/TodoList.vue'
 import NewTodo from '@/components/NewTodo.vue'
-import FiliterTodoList from '@/components/FiliterTodoList.vue'
+import FilterTodoList from '@/components/FilterTodoList.vue'
 
 </script>
 
 <template>
   <main>
     <!-- <TheWelcome /> -->
-    <FiliterTodoList></FiliterTodoList>
+    <FilterTodoList></FilterTodoList>
     <TodoList></TodoList>
     <NewTodo></NewTodo>
   </main>
