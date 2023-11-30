@@ -3,6 +3,26 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --primary-color: #0045A5;
+  --secondary-color: #80cfff;
+  --background-light: #ffffff;
+  --background-dark: #7378AB;
+}
+:root {
+  --background: var(--background-light);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--background-dark);
+  }
+}
+/* Set background color using the --background variable */
+body {
+  background-color: var(--background);
+}
 /* 
 :root {
   --vt-c-white: #ffffff;

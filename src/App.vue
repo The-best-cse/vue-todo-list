@@ -27,11 +27,11 @@
     </svg>
   </div>
   <div  class="flex p-3 mx-auto sm:mx-2">
-    <h1 class="text-base md:text-lg text-center">To-Do App</h1>
+    <h1 class="text-base md:text-2xl xl:text-4xl text-center text-secondary">To-Do App</h1>
   </div>
   </div>
   </header>
-  <div class="container mx-auto w-full px-4 py-8 sm:w-2/3">
+  <div class="container mx-auto w-full px-4 py-8 sm:w-3/4 lg:w-1/2">
     <RouterView />
   </div>
 </div>

@@ -9,13 +9,9 @@ module.exports = {
         primary: '#0045A5',
         secondary: '#80cfff',
         light: {
-          primary: '#0045A5',
-          secondary: '#80cfff',
           background: '#ffffff',
         },
         dark: {
-          primary: '#0045A5',
-          secondary: '#80cfff',
           background: '#7378AB',
         },
       }
