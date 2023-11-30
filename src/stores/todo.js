@@ -5,6 +5,7 @@ import axios from '../utils/axiosInstance';
 export const useTodoStore = defineStore('todo', {
   state: () => ({
     todoList: [], // Holds the fetched to-do items
+    originalTodoList: []
   }),
   getters: {
     /**
@@ -19,10 +20,12 @@ export const useTodoStore = defineStore('todo', {
     async fetchTodoList() {
       const response = await axios.get('/todos');
       this.todoList = response.data.todos;
+      this.originalTodoList = Array.from(this.todoList)
     },
 
     /**
      * Creates single to-do 
+     * @param {object} newTodo
      */
 
     async createTodo(newTodo) {
@@ -33,6 +36,8 @@ export const useTodoStore = defineStore('todo', {
 
     /**
      * Updates single to-do 
+     * @param {string} todoId
+     * @param {object} updatedTodo
      */
     async updateTodo(todoId, updatedTodo) {
       const response = await axios.put(`/todos/${todoId}`, updatedTodo); // Updating a todo will not update it into the server.
@@ -45,7 +50,8 @@ export const useTodoStore = defineStore('todo', {
     },
 
     /**
-     * Delets single to-do 
+     * Delets single to-do
+     * @param {string} todoId
      */
 
     async deleteTodo(todoId) {
@@ -60,5 +66,28 @@ export const useTodoStore = defineStore('todo', {
          }
       }      
     },
+    resetTodos() {
+      this.todoList.splice(0, this.todoList.length, ...this.originalTodoList);
+    },
+
+    /**
+     * Filter todos based on a regex pattern in the todo text
+     * @param {RegExp} regex - Regular expression pattern to filter todos
+     * @returns {object[]} - Returns an array of found todos matching the pattern
+     */
+    filterTodosByRegex(regex) {
+      const filteredTodos = this.todoList.filter(todo => regex.test(todo.todo));
+      this.todoList.splice(0, this.todoList.length, ...filteredTodos);
+    },
+
+    /**
+     * Filter todos based on a state if 'completed' or ' not completed'
+     * @param {Boolean} state - Todo state
+     * @returns {object[]} - Returns an array of found todos matching the state
+     */
+    filterTodosByState(state){
+      const filteredTodos = this.todoList.filter(todo => todo.completed === state);
+      this.todoList.splice(0, this.todoList.length, ...filteredTodos);
+    }
   },
 });
