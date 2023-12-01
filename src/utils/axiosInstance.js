@@ -1,6 +1,8 @@
 // Axios instance to handle dealing with backend requests
 import axios from 'axios';
 
+import {handleApiError} from './apiErrorHandler'
+
 const instance = axios.create({
     // using Todo API provided by DummyJSON
     baseURL: 'https://dummyjson.com', // Set your base URL
@@ -13,7 +15,8 @@ instance.interceptors.request.use(
     (error) => {
         // Handle request errors
         console.error('Error during request:', error);
-        return Promise.reject(error);
+
+        return Promise.reject(handleApiError(error));
     }
 );
 
@@ -21,7 +24,7 @@ instance.interceptors.response.use(
     (response) => response,
     (error) => {
         // Handle response errors
-        const errorMessage = error.response?.data?.message || 'An unexpected error occurred';
+        const errorMessage = handleApiError(error);
         return Promise.reject(new Error(errorMessage));
     }
 );
