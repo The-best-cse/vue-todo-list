@@ -151,8 +151,8 @@ export default {
     onMounted(async () => {
       try {
         await todoStore.hydrateState()
-        showSuccessMessage('Data fetched successfully!')
         todoList.value = todoStore.getTodoList
+        showSuccessMessage('Data fetched successfully!')
       } catch (e) {
         // Handle and display the error
         showErrorMessage(`Error fetching data: ${e.message || 'An error occurred while fetching the todo list.'}`)
