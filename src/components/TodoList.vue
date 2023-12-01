@@ -137,11 +137,11 @@ export default {
       checkBeforeDeleteTodo.value = { ...todo }
     }
 
-    onMounted(async () => {
+    onMounted(() => {
       try {
-        await todoStore.hydrateState()
-        showSuccessMessage('Data fetched successfully!')
+        todoStore.hydrateState()
         todoList.value = todoStore.getTodoList
+        showSuccessMessage('Data fetched successfully!')
       } catch (e) {
         // Handle and display the error
         showErrorMessage(`Error fetching data: ${e.message || 'An error occurred while fetching the todo list.'}`)
