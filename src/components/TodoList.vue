@@ -23,13 +23,14 @@
         <div class="flex w-1/12 mr-1 grid justify-items-end items-center">
           <input
             v-model="todo.completed"
+            @click="changeTodoState(todo)"
             type="checkbox"
             class="form-checkbox h-5 w-5 cursor-pointer rounded text-primary"
           />
         </div>
         <div class="flex w-8/12 grid justify-items-start items-center">
           <div
-          @click="todo.completed = !todo.completed"
+          @click="changeTodoState(todo)"
             v-bind:class="todo.completed ? 'line-through' : ''"
             class="ml-1 px-1 text-sm md:text-base xl:text-lg text-secondary cursor-pointer"
           >
@@ -137,9 +138,19 @@ export default {
       checkBeforeDeleteTodo.value = { ...todo }
     }
 
-    onMounted(() => {
+    const changeTodoState = async (todo) => {
+      todo.completed = !todo.completed
+      const updatedTodoObj = {
+        todo: todo.todo,
+        completed: todo.completed
+      }
+
+      await todoStore.updateTodo(todo.id, updatedTodoObj)
+    }
+
+    onMounted(async () => {
       try {
-        todoStore.hydrateState()
+        await todoStore.hydrateState()
         todoList.value = todoStore.getTodoList
         showSuccessMessage('Data fetched successfully!')
       } catch (e) {
@@ -160,7 +171,8 @@ export default {
       deleteTodo,
       errorMessage,
       successMessage,
-      showMessage
+      showMessage,
+      changeTodoState
     }
   }
 }
