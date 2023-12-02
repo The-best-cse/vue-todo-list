@@ -7,6 +7,8 @@ export const useTodoStore = defineStore('todo', {
     todoList: [], // Holds the fetched to-do items
     originalTodoList: [],
     loading: false,
+    isFilterActive: false,
+    filterFactor: {}
   }),
   getters: {
     /**
@@ -36,9 +38,20 @@ export const useTodoStore = defineStore('todo', {
      */
 
     async createTodo(newTodo) {
+      if(this.isFilterActive){
+        this.resetTodos()
+      }
+
       const response = await axios.post('/todos/add', newTodo) // Adding a new todo will not add it into the server.
       this.todoList.push(response.data)
       this.persistState()
+      if(this.isFilterActive){
+        if(this.filterFactor.type === 'regex'){
+        this.filterTodosByRegex(this.filterFactor.data)
+        } else if (this.filterFactor.type === 'state'){
+          this.filterTodosByState(this.filterFactor.data)
+        }
+      }
     },
 
     /**
@@ -47,13 +60,23 @@ export const useTodoStore = defineStore('todo', {
      * @param {object} updatedTodo
      */
     async updateTodo(todoId, updatedTodo) {
-      const response = await axios.put(`/todos/${todoId}`, updatedTodo) // Updating a todo will not update it into the server.
+      if(this.isFilterActive){
+        this.resetTodos()
+      }
 
+      const response = await axios.put(`/todos/${todoId}`, updatedTodo) // Updating a todo will not update it into the server.
       // Find the index of the todo item with the given ID
       const index = this.todoList.findIndex((todo) => todo.id === todoId)
       if (index !== -1) {
         this.todoList[index] = response.data
         this.persistState()
+        if(this.isFilterActive){
+          if(this.filterFactor.type === 'regex'){
+          this.filterTodosByRegex(this.filterFactor.data)
+          } else if (this.filterFactor.type === 'state'){
+            this.filterTodosByState(this.filterFactor.data)
+          }
+        }
       }
     },
 
@@ -63,6 +86,9 @@ export const useTodoStore = defineStore('todo', {
      */
 
     async deleteTodo(todoId) {
+      if(this.isFilterActive){
+        this.resetTodos()
+      }
       const response = await axios.delete(`/todos/${todoId}`) // It will simulate a DELETE request and will return deleted todo with "isDeleted" & "deletedOn" keys.
       if (response.data?.isDeleted) {
         // Find the index of the todo item with the given ID
@@ -72,6 +98,13 @@ export const useTodoStore = defineStore('todo', {
         if (indexToRemove !== -1) {
           this.todoList.splice(indexToRemove, 1)
           this.persistState()
+          if(this.isFilterActive){
+            if(this.filterFactor.type === 'regex'){
+            this.filterTodosByRegex(this.filterFactor.data)
+            } else if (this.filterFactor.type === 'state'){
+              this.filterTodosByState(this.filterFactor.data)
+            }
+          }
         }
       }
     },
@@ -95,6 +128,7 @@ export const useTodoStore = defineStore('todo', {
      * @returns {object[]} - Returns an array of found todos matching the pattern
      */
     filterTodosByRegex(regex) {
+      this.isFilterActive = true
       const filteredTodos = this.todoList.filter((todo) => regex.test(todo.todo))
       this.todoList.splice(0, this.todoList.length, ...filteredTodos)
     },
@@ -105,6 +139,7 @@ export const useTodoStore = defineStore('todo', {
      * @returns {object[]} - Returns an array of found todos matching the state
      */
     filterTodosByState(state) {
+      this.isFilterActive = true
       const filteredTodos = this.todoList.filter((todo) => todo.completed === state)
       this.todoList.splice(0, this.todoList.length, ...filteredTodos)
     },

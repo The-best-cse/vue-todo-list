@@ -125,7 +125,7 @@ export default {
     const checkBeforeDeleteTodo = ref({})
     const showDeleteDialogue= ref(false)
 
-    const loading = useTodoStore().loading
+    const loading = todoStore.loading
 
 
     const updateTodo = async (todo) => {
