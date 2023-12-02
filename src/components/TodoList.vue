@@ -81,12 +81,16 @@
         v-if="showEditSingleTodo"
         :todo="singleTodoContent"
         @close="showEditSingleTodo = false"
+        @success="success"
+        @error="error"
       >
       </EditSingleTodo>
       <DeleteSingleTodo
         v-if="showDeleteDialogue"
         :todo="checkBeforeDeleteTodo"
         @close="showDeleteDialogue = false"
+        @success="success"
+        @error="error"
       >
       </DeleteSingleTodo>
     </div>
@@ -117,6 +121,7 @@ export default {
       showErrorMessage
     } = useMessages()
 
+
     const todoStore = useTodoStore()
     const todoList = ref([])
     const newTodo = ref({})
@@ -127,6 +132,13 @@ export default {
 
     const loading = todoStore.loading
 
+    const success = (message) => {
+      showSuccessMessage(message)
+    }
+
+    const error = (message) => {
+      showErrorMessage(message)
+    }
 
     const updateTodo = async (todo) => {
       showEditSingleTodo.value = true
@@ -155,10 +167,12 @@ export default {
         todoList.value = todoStore.getTodoList
       } catch (e) {
         // Handle and display the error
-        showErrorMessage(`Error fetching data: ${e.message || 'An error occurred while fetching the todo list.'}`)
+       showErrorMessage(`Error fetching data: ${e.message || 'An error occurred while fetching the todo list.'}`)
       }
     })
 
+  
+  
     return {
       todoList,
       newTodo,
@@ -172,7 +186,9 @@ export default {
       errorMessage,
       successMessage,
       showMessage,
-      changeTodoState
+      changeTodoState,
+      success,
+      error
     }
   }
 }
