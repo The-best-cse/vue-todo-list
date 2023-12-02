@@ -2,7 +2,7 @@
 <template>
 <div class="fixed inset-0 flex items-center justify-center z-50">
     <div class="bg-black bg-opacity-50 absolute inset-0"></div>
-    <div class="relative z-10 bg-white p-4 rounded-lg shadow-lg">
+    <div class="relative z-100 bg-white p-4 rounded-lg shadow-lg">
       <div v-if="successMessage !== ''" class="success-message">
         {{ successMessage }}
       </div>
