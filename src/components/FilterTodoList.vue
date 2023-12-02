@@ -35,10 +35,12 @@ export default {
 
       if (isStateFilter) {
         const isCompletedState = filterInput === 'completed'
+        todoStore.filterFactor = { type: 'state', data: isCompletedState }
         todoStore.filterTodosByState(isCompletedState)
       } else {
         if (filterInput !== '') {
           const regex = new RegExp(filterInput, 'i') // 'i' for case-insensitive search
+          todoStore.filterFactor = { type: 'regex', data: regex }
           todoStore.filterTodosByRegex(regex)
         }
       }
