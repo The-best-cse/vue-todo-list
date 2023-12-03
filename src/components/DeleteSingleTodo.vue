@@ -1,6 +1,5 @@
 <template>
-    <teleport to="body">
-            <!-- Use MessageDisplay component to show success or error messages -->
+    <!-- <teleport to="body"> -->
       <div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50 backdrop-filter backdrop-blur-lg">
       <div class="bg-white rounded-lg shadow-lg p-6 w-full max-w-md">
         <h2 class="text-lg font-semibold mb-4 text-center">You Are Going to Delete This?</h2>
@@ -13,7 +12,7 @@
         </div>
       </div>
     </div>
-    </teleport>
+    <!-- </teleport> -->
   </template>
   
   <script>
@@ -38,7 +37,7 @@
           closeDeleteDilouge()
       } catch (e) {
         // Display the error
-        emit(`Error deleting data: ${e.message || 'An error occurred while deleting this todo.'}` )
+        emit('error',`Error deleting data: ${e.message || 'An error occurred while deleting this todo.'}` )
         closeDeleteDilouge()
       }
       }
