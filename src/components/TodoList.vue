@@ -1,4 +1,3 @@
-<!-- single todo component -->
 <template>
   <div class="overflow-hidden rounded-lg bg-gray-100 shadow-md dark:bg-gray-700">
     <div class="px-4 py-2">
@@ -160,7 +159,7 @@ export default {
       await todoStore.updateTodo(todo.id, updatedTodoObj)
     }
 
-    onMounted(async () => {
+    const fetchData = async () => {
       try {
         await todoStore.hydrateState()
         todoList.value = todoStore.getTodoList
@@ -169,7 +168,8 @@ export default {
         // Handle and display the error
        showErrorMessage(`Error fetching data: ${e.message || 'An error occurred while fetching the todo list.'}`)
       }
-    })
+    };
+    onMounted(fetchData)
 
   
   
