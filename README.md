@@ -82,6 +82,7 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 - `components`: Contains Vue components. In this case, TodoList.vue is the main component.
 - `views`: Contains Vue views. In this case, HomeView.vue is the main view.
 - `stores`: Contains Pinia stores. In this case, TodoStore todo.js is the main store.
+- `utils`: Contains project utilities.
 - `router`: Contains app routes.
 - `App.vue`: The main application component.
 - `main.js`: Entry point to the application.
