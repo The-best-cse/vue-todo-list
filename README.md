@@ -37,33 +37,44 @@ API Integration: The application uses the Todo API provided by [DummyJSON](https
 4. **Open your browser:**
    Visit http://localhost:PORT to view the app.
 
-## Project Structure 'CHANGE ME'
+## Project Structure
 
-```bash
-src/
-├── [assets]
-├── ├── base.css
-├── ├── logo.svg
-├── └── main.css
-├── [components]
-├── ├── TodoList.vue
-├── ├── FilterTodoList.vue
-├── ├── NewTodo.vue
-├── ├── EditSingleTodo.vue
-├── ├── [__tests__]
-├── ├── └── 
-├── main.js
-├── [router]
-└── ├── index.js
-├── [stores]
-├── ├── [__tests__]
-└── ├── ├──Todo.spec.js
-└── ├── todo.js
-├── [utils]
-├── ├── apiErrorHandler.js
-└── ├── axiosInstance.js
-└── [views]
-└── ├── HomeView.vue
+```
+├─ src
+│  ├─ App.vue
+│  ├─ assets
+│  │  ├─ base.css
+│  │  ├─ logo.svg
+│  │  └─ main.css
+│  ├─ components
+│  │  ├─ DeleteSingleTodo.vue
+│  │  ├─ EditSingleTodo.vue
+│  │  ├─ FilterTodoList.vue
+│  │  ├─ MessageDisplay.vue
+│  │  ├─ NewTodo.vue
+│  │  ├─ TodoList.vue
+│  │  └─ __tests__
+│  │     ├─ DeleteSingleTodo.spec.js
+│  │     ├─ EditSingleTodo.spec.js
+│  │     ├─ FilterTodoList.spec.js
+│  │     ├─ NewTodo.spec.js
+│  │     └─ TodoList.spec.js
+│  ├─ main.js
+│  ├─ router
+│  │  └─ index.js
+│  ├─ stores
+│  │  ├─ __tests__
+│  │  │  └─ Todo.spec.js
+│  │  └─ todo.js
+│  ├─ utils
+│  │  ├─ apiErrorHandler.js
+│  │  ├─ axiosInstance.js
+│  │  └─ messagesComposition.js
+│  └─ views
+│     └─ HomeView.vue
+├─ tailwind.config.js
+├─ vite.config.js
+└─ vitest.config.js
 
 ```
 
@@ -112,4 +123,3 @@ npm run test:unit
 ```sh
 npm run lint
 ```
-
